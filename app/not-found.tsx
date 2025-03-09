@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "404",
-  description: "Error 404",
+  description: "Error 404 wak",
 };
 
 export default function NotFound() {

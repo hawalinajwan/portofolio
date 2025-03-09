@@ -34,7 +34,7 @@ export default function BlogPosts() {
                   {post.metadata.title}
                 </h2>
                 <p className="text-neutral-600 dark:text-neutral-400 tabular-nums text-sm">
-                  {formatDate(post.metadata.publishedAt, false)}
+                  {formatDate(post.metadata.publishedAt)}
                 </p>
               </div>
             </Link>

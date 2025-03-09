@@ -4,61 +4,81 @@ import { socialLinks } from "./config";
 export default function Page() {
   return (
     <section>
-      <a href={socialLinks.twitter} target="_blank">
-        <Image
-          src="/profile.png"
-          alt="Profile photo"
-          className="rounded-full bg-gray-100 block lg:mt-5 mt-0 lg:mb-5 mb-10 mx-auto sm:float-right sm:ml-5 sm:mb-5 grayscale hover:grayscale-0"
-          unoptimized
-          width={160}
-          height={160}
-          priority
-        />
-      </a>
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">
-        Portfolio template!
-      </h1>
+      <div className="flex flex-col sm:flex-row sm:items-center mb-8">
+        <a href={socialLinks.github} target="_blank">
+          <Image
+            src="/profile.png"
+            alt="Profile photo"
+            className="rounded-full bg-gray-100 block  mt-0 lg:mb-5 mb-10  items-left sm:float-left sm:mr-5 sm:mb-5 grayscale hover:grayscale-0"
+            unoptimized
+            width={120}
+            height={120}
+            priority
+          />
+        </a>
+        <h1 className="mb-2 text-2xl font-bold tracking-tight">
+          Hawali Najwan
+        </h1>
+      </div>
+
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          A clean, fast, and lightweight portfolio template built with Next.js,
-          Vercel, and Tailwind CSS.
-        </p>
-        <p>
-          Nextfolio has everything you need for a portfolio: MDX blog, SEO, RSS,
-          Atom & JSON feeds, analytics, Tweet & YouTube embeds, KaTeX and {""}
+          314 year old student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
           <a
             target="_blank"
-            href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
+            href="mailto:hi.najwan@gmail.com"
           >
-            more
-          </a>
-          .
+            Email
+          </a>{" "}/ <a
+            target="_blank"
+            href="https://discord.com/users/644892716953632768"
+          >Dm</a>{" "}me!
         </p>
-        <p>
-          Nextfolio is{" "}
-          <a href={socialLinks.github} target="_blank">
-            open-source
-          </a>{" "}
-          and fully customizable, making it easy to add more features.
-        </p>
-        <p>
+
+
+        <p>Discord Server{" "}
           <a
-            href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
+            href="https://discord.gg/YfZjqSsVz8"
             target="_blank"
           >
-            Deploy
+            Kelas-Axem
           </a>{" "}
-          your Nextfolio site with Vercel in minutes and follow the set up
-          instructions in the{" "}
-          <a href="/blog/getting-started">Getting Started</a> post.
+          &{" "}
+          <a href="https://discord.gg/joingtid"
+            target="_blank">GTID</a>
         </p>
-        <p>
-          Built and maintained by{" "}
-          <a href="https://imsirius.xyz/" target="_blank">
-            Sirius
-          </a>
-          .
-        </p>
+
+      </div>
+      <hr className="mt-8 border-t border-gray-300 dark:border-gray-700" />
+
+      <div>
+      <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
+          Latest Video
+        </h1>
+        <div>
+        <iframe 
+  style={{ borderRadius: '15px', width: '100%', height: '315px', border: 'none' }} 
+  src="https://www.youtube.com/embed/DU2rhb1VoX0?si=Y-RFUhhlT64TT2Qz" 
+  title="-" 
+  frameBorder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  referrerPolicy="strict-origin-when-cross-origin" 
+  allowFullScreen
+></iframe>
+        </div>
+        <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
+          Check out my playlist
+        </h1>
+        <div>
+        <iframe
+      style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
+      src="https://open.spotify.com/embed/playlist/0a9wy5iYemx8SkZv2JZffa?utm_source=generator&theme=0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    />
+        </div>
+
       </div>
     </section>
   );

@@ -1,20 +1,26 @@
 import Link from "next/link";
 import { ThemeSwitch } from "./theme-switch";
-import { metaData } from "../config";
+import Image from "next/image";
 
 const navItems = {
+  "/": { name: "About" },
   "/blog": { name: "Blog" },
-  "/projects": { name: "Projects" },
-  "/photos": { name: "Photos" },
+
 };
 
 export function Navbar() {
   return (
-    <nav className="lg:mb-16 mb-12 py-5">
+    <nav className="lg:mb-12 mb-12 py-2">
       <div className="flex flex-col md:flex-row md:items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="text-3xl font-semibold tracking-tight">
-            {metaData.title}
+        <Link href="https://youtu.be/dQw4w9WgXcQ?si=wtacTR8yq7IM5HRG"  target="_blank">
+        <Image
+              src="/navv.png" 
+              alt="Logo"
+              width={75} 
+              height={75} 
+              className="object-contain"
+            />
           </Link>
         </div>
         <div className="flex flex-row gap-4 mt-6 md:mt-0 md:ml-auto items-center">
@@ -27,7 +33,7 @@ export function Navbar() {
               {name}
             </Link>
           ))}
-          <ThemeSwitch />
+         
         </div>
       </div>
     </nav>
