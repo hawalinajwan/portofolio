@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const navItems = {
   "/": { name: "About" },
-  "/blog": { name: "Blog" },
+  "/blog": { name: "Post" },
 
 };
 

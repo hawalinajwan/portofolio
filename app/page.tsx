@@ -32,6 +32,7 @@ export default function Page() {
           </a>{" "}/ <a
             target="_blank"
             href="https://discord.com/users/644892716953632768"
+            rel="noopener noreferrer"
           >Dm</a>{" "}me!
         </p>
 
@@ -40,43 +41,46 @@ export default function Page() {
           <a
             href="https://discord.gg/YfZjqSsVz8"
             target="_blank"
+            rel="noopener noreferrer"
           >
             Kelas-Axem
           </a>{" "}
           &{" "}
           <a href="https://discord.gg/joingtid"
-            target="_blank">GTID</a>
+            target="_blank"
+            rel="noopener">
+            GTID</a>
         </p>
 
       </div>
       <hr className="mt-8 border-t border-gray-300 dark:border-gray-700" />
 
       <div>
-      <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
+        <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
           Latest Video
         </h1>
         <div>
-        <iframe 
-  style={{ borderRadius: '15px', width: '100%', height: '315px', border: 'none' }} 
-  src="https://www.youtube.com/embed/DU2rhb1VoX0?si=Y-RFUhhlT64TT2Qz" 
-  title="-" 
-  frameBorder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerPolicy="strict-origin-when-cross-origin" 
-  allowFullScreen
-></iframe>
+          <iframe
+            style={{ borderRadius: '15px', width: '100%', height: '315px', border: 'none' }}
+            src="https://www.youtube.com/embed/DU2rhb1VoX0?si=Y-RFUhhlT64TT2Qz"
+            title="-"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
         </div>
         <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
           Check out my playlist
         </h1>
         <div>
-        <iframe
-      style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
-      src="https://open.spotify.com/embed/playlist/0a9wy5iYemx8SkZv2JZffa?utm_source=generator&theme=0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-    />
+          <iframe
+            style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
+            src="https://open.spotify.com/embed/playlist/0a9wy5iYemx8SkZv2JZffa?utm_source=generator&theme=0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
 
       </div>
