@@ -23,17 +23,13 @@ export default function Page() {
 
       <div className="prose prose-neutral dark:prose-invert">
         <p>
-          314 year old student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
+          A student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
           <a
             target="_blank"
             href="mailto:hi.najwan@gmail.com"
           >
-            Email
-          </a>{" "}/ <a
-            target="_blank"
-            href="https://discord.com/users/644892716953632768"
-            rel="noopener noreferrer"
-          >Dm</a>{" "}me!
+            Email me!
+          </a>
         </p>
 
 
