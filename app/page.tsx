@@ -57,6 +57,7 @@ export default function Page() {
         </h1>
         <div>
           <iframe
+            loading="lazy"
             style={{ borderRadius: '15px', width: '100%', height: '315px', border: 'none' }}
             src="https://www.youtube.com/embed/DU2rhb1VoX0?si=Y-RFUhhlT64TT2Qz"
             title="-"
@@ -71,6 +72,7 @@ export default function Page() {
         </h1>
         <div>
           <iframe
+            loading="lazy"
             style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
             src="https://open.spotify.com/embed/playlist/0a9wy5iYemx8SkZv2JZffa?utm_source=generator&theme=0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
