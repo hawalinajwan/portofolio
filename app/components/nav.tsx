@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex items-center">
         <Link href="https://youtu.be/dQw4w9WgXcQ?si=wtacTR8yq7IM5HRG"  target="_blank">
         <Image
-              src="/navv.png" 
+              src="/h0n.png" 
               alt="Logo"
               width={75} 
               height={75} 
