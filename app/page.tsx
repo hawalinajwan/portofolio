@@ -55,7 +55,7 @@ export default function Page() {
         <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
           Latest Video
         </h1>
-        <div>
+        <div className="cursor-pointer">
           <iframe
             loading="lazy"
             style={{ borderRadius: '15px', width: '100%', height: '315px', border: 'none' }}
@@ -70,7 +70,7 @@ export default function Page() {
         <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
           Check out my playlist
         </h1>
-        <div>
+        <div className="cursor-pointer">
           <iframe
             loading="lazy"
             style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
