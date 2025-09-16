@@ -26,7 +26,7 @@ export default function Page() {
           A student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
           <a
             target="_blank"
-            href="mailto:hi.najwan@gmail.com"
+            href="mailto:hi@hanamara.site"
           >
             Email me!
           </a>
