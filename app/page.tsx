@@ -26,13 +26,11 @@ export default function Page() {
           A student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
           <a
             target="_blank"
-            href="mailto:hi@hanamara.site"
+            href="mailto:hi@hawali.site"
           >
             Email me!
           </a>
         </p>
-
-
         <p>Discord Server{" "}
           <a
             href="https://discord.gg/YfZjqSsVz8"
@@ -47,7 +45,6 @@ export default function Page() {
             rel="noopener">
             GTID</a>
         </p>
-
       </div>
       <hr className="mt-8 border-t border-gray-300 dark:border-gray-700" />
 
@@ -80,7 +77,6 @@ export default function Page() {
             allowFullScreen
           />
         </div>
-
       </div>
     </section>
   );
