@@ -71,7 +71,7 @@ export default function Page() {
           <iframe
             loading="lazy"
             style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
-            src="https://open.spotify.com/embed/playlist/0a9wy5iYemx8SkZv2JZffa?utm_source=generator&theme=0"
+            src="https://open.spotify.com/embed/playlist/2lbbYxEXLQpLm1fuXxRfGK?utm_source=generator&theme=0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
