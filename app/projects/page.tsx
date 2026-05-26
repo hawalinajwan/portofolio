@@ -9,23 +9,25 @@ export const metadata: Metadata = {
 
 export default function Projects() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">Projects</h1>
-      <div>
-        {projects.map((project, index) => (
+    <section className="pt-24 sm:pt-20 md:pt-24">
+      <h1 className="mb-8 border-b border-neutral-200 pb-5 text-2xl font-bold tracking-tight text-neutral-950 dark:border-neutral-800 dark:text-neutral-50 sm:text-3xl">
+        Projects
+      </h1>
+      <div className="divide-y divide-neutral-200 dark:divide-neutral-800">
+        {projects.map((project) => (
           <Link
-            key={index}
+            key={project.url}
             href={project.url}
-            className="flex flex-col space-y-1 mb-5 transition-opacity duration-200 hover:opacity-80"
+            className="grid gap-2 py-5 transition-opacity duration-200 first:pt-0 hover:opacity-75 sm:grid-cols-[170px_1fr] sm:gap-5"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-              <h2 className="text-black dark:text-white">{project.title}</h2>
-              <p className="text-neutral-600 dark:text-neutral-400 tracking-tight">
-                {project.description}
-              </p>
-            </div>
+            <h2 className="font-medium text-black dark:text-white">
+              {project.title}
+            </h2>
+            <p className="leading-relaxed tracking-tight text-neutral-600 dark:text-neutral-400">
+              {project.description}
+            </p>
           </Link>
         ))}
       </div>

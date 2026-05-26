@@ -1,76 +1,92 @@
 import Image from "next/image";
+import { SpotifyStatus } from "./components/spotify-status";
 import { socialLinks } from "./config";
 
 export default function Page() {
   return (
-    <section>
-      <div className="flex flex-col sm:flex-row sm:items-center mb-8">
-        <a href={socialLinks.github} target="_blank">
+    <section className="pt-24 sm:pt-20 md:pt-24">
+      <div className="relative flex items-center gap-4 border-b border-neutral-200 pb-10 dark:border-neutral-800 sm:gap-5 sm:pb-9">
+        <a
+          href={socialLinks.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative shrink-0"
+        >
           <Image
             src="/profile.png"
             alt="Profile photo"
-            className="rounded-full bg-gray-100 block  mt-0 lg:mb-5 mb-10  items-left sm:float-left sm:mr-5 sm:mb-5 grayscale hover:grayscale-0"
+            className="h-20 w-20 rounded-full bg-gray-100 object-cover grayscale transition-all hover:grayscale-0 sm:h-[108px] sm:w-[108px]"
             unoptimized
             width={120}
             height={120}
             priority
           />
+          <div className="absolute left-14 -top-7 z-10 block max-w-[calc(100vw-116px)] sm:left-16 sm:max-w-[320px]">
+            <SpotifyStatus />
+          </div>
         </a>
-        <h1 className="mb-2 text-2xl font-bold tracking-tight">
-          Hawali Najwan
-        </h1>
+        <div className="min-w-0">
+          <h1 className="text-2xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-3xl md:text-[2rem]">
+            Hawali Najwan
+          </h1>
+        </div>
       </div>
 
-      <div className="prose prose-neutral dark:prose-invert">
-        <p>
+      <div className="border-b border-neutral-200 py-8 text-lg leading-relaxed text-slate-700 dark:border-neutral-800 dark:text-slate-300 sm:py-10 sm:text-xl">
+        <p className="mb-3">
           A student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
           <a
             target="_blank"
             href="mailto:hi@hawali.site"
+            className="font-semibold text-blue-600 transition-colors hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
             Email me!
           </a>
         </p>
-        <p>Discord Server{" "}
+        <p>
+          Discord Server{" "}
           <a
             href="https://discord.gg/YfZjqSsVz8"
             target="_blank"
             rel="noopener noreferrer"
+            className="font-semibold text-blue-600 transition-colors hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
           >
             Kelas-Axem
           </a>{" "}
           &{" "}
-          <a href="https://discord.gg/joingtid"
+          <a
+            href="https://discord.gg/joingtid"
             target="_blank"
-            rel="noopener">
-            GTID</a>
+            rel="noopener"
+            className="font-semibold text-blue-600 transition-colors hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            GTID
+          </a>
         </p>
       </div>
-      <hr className="mt-8 border-t border-gray-300 dark:border-gray-700" />
 
-      <div>
-        <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
+      <div className="pt-8 sm:pt-10">
+        <h1 className="mb-3 text-xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-2xl">
           Latest Video
         </h1>
-        <div className="cursor-pointer">
+        <div className="aspect-video cursor-pointer overflow-hidden rounded-[15px] bg-neutral-100 dark:bg-neutral-900">
           <iframe
             loading="lazy"
-            style={{ borderRadius: '15px', width: '100%', height: '315px', border: 'none' }}
+            className="h-full w-full border-0"
             src="https://www.youtube.com/embed/DU2rhb1VoX0?si=Y-RFUhhlT64TT2Qz"
             title="-"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
         </div>
-        <h1 className="mt-8 mb-2 text-2xl font-bold tracking-tight">
+        <h1 className="mb-3 mt-8 text-xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-2xl">
           Check out my playlist
         </h1>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer overflow-hidden rounded-[15px] bg-neutral-100 dark:bg-neutral-900">
           <iframe
             loading="lazy"
-            style={{ borderRadius: '15px', width: '100%', height: '152px', border: 'none' }}
+            className="h-[152px] w-full border-0"
             src="https://open.spotify.com/embed/playlist/2lbbYxEXLQpLm1fuXxRfGK?utm_source=generator&theme=0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
