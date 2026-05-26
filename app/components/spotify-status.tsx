@@ -19,7 +19,8 @@ const fallbackStatus: SpotifyStatus = {
 export function SpotifyStatus() {
   const [status, setStatus] = useState<SpotifyStatus>(fallbackStatus);
   const [shouldScroll, setShouldScroll] = useState(false);
-  const textRef = useRef<HTMLSpanElement>(null);
+  const textViewportRef = useRef<HTMLSpanElement>(null);
+  const textMeasureRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -60,23 +61,30 @@ export function SpotifyStatus() {
     : status.title;
 
   useEffect(() => {
-    if (!status.isPlaying || !textRef.current) {
+    if (
+      !status.isPlaying ||
+      !textViewportRef.current ||
+      !textMeasureRef.current
+    ) {
       setShouldScroll(false);
       return;
     }
 
     function updateScrollState() {
-      if (!textRef.current) {
+      if (!textViewportRef.current || !textMeasureRef.current) {
         return;
       }
 
-      setShouldScroll(textRef.current.scrollWidth > textRef.current.clientWidth);
+      setShouldScroll(
+        textMeasureRef.current.scrollWidth > textViewportRef.current.clientWidth
+      );
     }
 
-    updateScrollState();
+    const frame = window.requestAnimationFrame(updateScrollState);
     window.addEventListener("resize", updateScrollState);
 
     return () => {
+      window.cancelAnimationFrame(frame);
       window.removeEventListener("resize", updateScrollState);
     };
   }, [status.isPlaying, statusText]);
@@ -111,13 +119,13 @@ export function SpotifyStatus() {
           <TbBrandSpotify className="h-2.5 w-2.5" aria-hidden="true" />
         </span>
       </span>
-      <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden">
+      <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden leading-none">
         <span className="shrink-0 text-neutral-500 dark:text-neutral-400">
           Playing:
         </span>
         <span
-          ref={textRef}
-          className="min-w-0 overflow-hidden whitespace-nowrap"
+          ref={textViewportRef}
+          className="relative block min-w-0 flex-1 overflow-hidden whitespace-nowrap"
           title={statusText}
         >
           <span
@@ -152,13 +160,21 @@ export function SpotifyStatus() {
               </span>
             ) : null}
           </span>
+          <span
+            ref={textMeasureRef}
+            className="pointer-events-none absolute left-0 top-0 -z-10 inline-block whitespace-nowrap opacity-0"
+            aria-hidden="true"
+          >
+            <span className="font-semibold">{status.title}</span>
+            {status.artist ? <span> - {status.artist}</span> : null}
+          </span>
         </span>
       </span>
     </>
   );
 
   const className =
-    "relative inline-flex w-[min(260px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 py-2 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors before:absolute before:-bottom-2 before:left-5 before:h-3.5 before:w-6 before:rounded-[999px_999px_999px_6px] before:border before:border-neutral-300 before:bg-white before:content-[''] after:absolute after:-bottom-3.5 after:left-3 after:h-2.5 after:w-3.5 after:rounded-full after:border after:border-neutral-300 after:bg-white after:content-[''] dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] dark:before:border-neutral-700 dark:before:bg-neutral-950 dark:after:border-neutral-700 dark:after:bg-neutral-950 sm:w-[320px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:py-2.5 sm:text-sm sm:before:-bottom-2.5 sm:before:left-7 sm:before:h-4 sm:before:w-7 sm:after:-bottom-4 sm:after:left-4 sm:after:h-3 sm:after:w-4";
+    "relative inline-flex h-9 w-[min(260px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors before:absolute before:-bottom-2 before:left-5 before:h-3.5 before:w-6 before:rounded-[999px_999px_999px_6px] before:border before:border-neutral-300 before:bg-white before:content-[''] after:absolute after:-bottom-3.5 after:left-3 after:h-2.5 after:w-3.5 after:rounded-full after:border after:border-neutral-300 after:bg-white after:content-[''] dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] dark:before:border-neutral-700 dark:before:bg-neutral-950 dark:after:border-neutral-700 dark:after:bg-neutral-950 sm:h-11 sm:w-[320px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm sm:before:-bottom-2.5 sm:before:left-7 sm:before:h-4 sm:before:w-7 sm:after:-bottom-4 sm:after:left-4 sm:after:h-3 sm:after:w-4";
 
   if (status.songUrl) {
     return (
