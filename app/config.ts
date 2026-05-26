@@ -1,6 +1,6 @@
 export const metaData = {
   baseUrl: "https://fol-nine.vercel.app/",
-  title: "阿波 ── hawalinajwan",
+  title: "花",
   name: "hawalinajwan",
   ogImage: "/profile.png",
   description:

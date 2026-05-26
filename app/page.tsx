@@ -1,6 +1,13 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { SpotifyStatus } from "./components/spotify-status";
 import { socialLinks } from "./config";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "About | 花",
+  },
+};
 
 export default function Page() {
   return (

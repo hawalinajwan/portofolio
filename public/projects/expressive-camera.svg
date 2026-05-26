@@ -1,0 +1,24 @@
+<svg width="1280" height="800" viewBox="0 0 1280 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="800" fill="#F1F2F4"/>
+  <text x="640" y="143" text-anchor="middle" fill="#333333" font-family="Arial, sans-serif" font-size="42" font-weight="800">Expressive Camera</text>
+  <text x="640" y="220" text-anchor="middle" fill="#000000" font-family="Arial, sans-serif" font-size="25" font-weight="800">Automatic Capturing</text>
+  <text x="640" y="262" text-anchor="middle" fill="#000000" font-family="Arial, sans-serif" font-size="25" font-weight="800">Show Expression:😁</text>
+  <rect x="332" y="300" width="616" height="344" rx="9" fill="white" filter="url(#shadow)"/>
+  <rect x="426" y="302" width="428" height="340" rx="7" fill="#121212"/>
+  <rect x="426" y="302" width="428" height="340" rx="7" fill="url(#camera)"/>
+  <circle cx="640" cy="430" r="74" fill="#2D2D2D"/>
+  <path d="M562 642C570 560 600 512 640 512C680 512 710 560 718 642H562Z" fill="#4B4B4B"/>
+  <circle cx="612" cy="426" r="9" fill="#161616"/>
+  <circle cx="668" cy="426" r="9" fill="#161616"/>
+  <path d="M610 470C630 484 652 484 672 470" stroke="#181818" stroke-width="7" stroke-linecap="round"/>
+  <text x="640" y="718" text-anchor="middle" fill="#8A8A8A" font-family="Arial, sans-serif" font-size="14">Made with heart by hawalinajwan</text>
+  <defs>
+    <filter id="shadow" x="300" y="268" width="680" height="408" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.18"/>
+    </filter>
+    <radialGradient id="camera" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(640 420) rotate(90) scale(250 314)">
+      <stop stop-color="#374151" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0.74"/>
+    </radialGradient>
+  </defs>
+</svg>
