@@ -149,3 +149,25 @@ table {
 .title {
   text-wrap: balance;
 }
+
+.spotify-status-marquee {
+  animation: spotify-status-marquee 11s linear infinite;
+  will-change: transform;
+}
+
+@keyframes spotify-status-marquee {
+  0%,
+  12% {
+    transform: translateX(0);
+  }
+  88%,
+  100% {
+    transform: translateX(calc(-50% - 1rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotify-status-marquee {
+    animation: none;
+  }
+}
