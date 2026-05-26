@@ -155,6 +155,21 @@ table {
   will-change: transform;
 }
 
+.spotify-status-pop {
+  animation: spotify-status-pop 420ms cubic-bezier(0.22, 1, 0.36, 1) 260ms both;
+  transform-origin: 34px calc(100% + 6px);
+}
+
+.spotify-status-tail-dot {
+  animation: spotify-status-tail-dot 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center;
+}
+
+.spotify-status-tail-oval {
+  animation: spotify-status-tail-oval 280ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  transform-origin: left bottom;
+}
+
 @keyframes spotify-status-marquee {
   0%,
   12% {
@@ -166,8 +181,44 @@ table {
   }
 }
 
+@keyframes spotify-status-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.18);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spotify-status-tail-dot {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spotify-status-tail-oval {
+  0% {
+    opacity: 0;
+    transform: scale(0.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .spotify-status-marquee {
+  .spotify-status-marquee,
+  .spotify-status-pop,
+  .spotify-status-tail-dot,
+  .spotify-status-tail-oval {
     animation: none;
   }
 }

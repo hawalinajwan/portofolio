@@ -18,6 +18,7 @@ const fallbackStatus: SpotifyStatus = {
 
 export function SpotifyStatus() {
   const [status, setStatus] = useState<SpotifyStatus>(fallbackStatus);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [shouldScroll, setShouldScroll] = useState(false);
   const textViewportRef = useRef<HTMLSpanElement>(null);
   const textMeasureRef = useRef<HTMLSpanElement>(null);
@@ -32,6 +33,10 @@ export function SpotifyStatus() {
         });
 
         if (!response.ok) {
+          if (isMounted) {
+            setStatus(fallbackStatus);
+            setHasLoaded(true);
+          }
           return;
         }
 
@@ -39,10 +44,12 @@ export function SpotifyStatus() {
 
         if (isMounted) {
           setStatus(data);
+          setHasLoaded(true);
         }
       } catch {
         if (isMounted) {
           setStatus(fallbackStatus);
+          setHasLoaded(true);
         }
       }
     }
@@ -89,13 +96,39 @@ export function SpotifyStatus() {
     };
   }, [status.isPlaying, statusText]);
 
+  if (!hasLoaded) {
+    return null;
+  }
+
+  const wrapperClassName = "relative inline-block";
+  const tailClassName =
+    "pointer-events-none absolute border border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-950";
+  const bubbleClassName =
+    "spotify-status-pop relative z-10 inline-flex h-9 w-[min(260px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] sm:h-11 sm:w-[320px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm";
+
+  const tail = (
+    <>
+      <span
+        className={`${tailClassName} spotify-status-tail-dot -bottom-3.5 left-3 z-0 h-2.5 w-3.5 rounded-full sm:-bottom-4 sm:left-4 sm:h-3 sm:w-4`}
+        aria-hidden="true"
+      />
+      <span
+        className={`${tailClassName} spotify-status-tail-oval -bottom-2 left-5 z-0 h-3.5 w-6 rounded-[999px_999px_999px_6px] sm:-bottom-2.5 sm:left-7 sm:h-4 sm:w-7`}
+        aria-hidden="true"
+      />
+    </>
+  );
+
   if (!status.isPlaying) {
     return (
-      <div className="relative inline-flex max-w-[min(260px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 py-2 text-xs font-medium text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] before:absolute before:-bottom-2 before:left-5 before:h-3.5 before:w-6 before:rounded-[999px_999px_999px_6px] before:border before:border-neutral-300 before:bg-white before:content-[''] after:absolute after:-bottom-3.5 after:left-3 after:h-2.5 after:w-3.5 after:rounded-full after:border after:border-neutral-300 after:bg-white after:content-[''] dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] dark:before:border-neutral-700 dark:before:bg-neutral-950 dark:after:border-neutral-700 dark:after:bg-neutral-950 sm:max-w-full sm:gap-2 sm:rounded-[22px] sm:px-4 sm:py-2.5 sm:text-sm sm:before:-bottom-2.5 sm:before:left-7 sm:before:h-4 sm:before:w-7 sm:after:-bottom-4 sm:after:left-4 sm:after:h-3 sm:after:w-4">
-        <span className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 sm:h-5 sm:w-5">
-          <TbBed className="h-3.5 w-3.5" aria-hidden="true" />
-        </span>
-        <span className="truncate">Zzzz</span>
+      <div className={wrapperClassName}>
+        {tail}
+        <div className={`${bubbleClassName} font-medium`}>
+          <span className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 sm:h-5 sm:w-5">
+            <TbBed className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+          <span className="truncate">Zzzz</span>
+        </div>
       </div>
     );
   }
@@ -173,21 +206,28 @@ export function SpotifyStatus() {
     </>
   );
 
-  const className =
-    "relative inline-flex h-9 w-[min(260px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors before:absolute before:-bottom-2 before:left-5 before:h-3.5 before:w-6 before:rounded-[999px_999px_999px_6px] before:border before:border-neutral-300 before:bg-white before:content-[''] after:absolute after:-bottom-3.5 after:left-3 after:h-2.5 after:w-3.5 after:rounded-full after:border after:border-neutral-300 after:bg-white after:content-[''] dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] dark:before:border-neutral-700 dark:before:bg-neutral-950 dark:after:border-neutral-700 dark:after:bg-neutral-950 sm:h-11 sm:w-[320px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm sm:before:-bottom-2.5 sm:before:left-7 sm:before:h-4 sm:before:w-7 sm:after:-bottom-4 sm:after:left-4 sm:after:h-3 sm:after:w-4";
-
   if (status.songUrl) {
     return (
       <a
         href={status.songUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${className} hover:bg-neutral-50 dark:hover:bg-neutral-900`}
+        className={`${wrapperClassName} group`}
       >
-        {content}
+        {tail}
+        <span
+          className={`${bubbleClassName} group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900`}
+        >
+          {content}
+        </span>
       </a>
     );
   }
 
-  return <div className={className}>{content}</div>;
+  return (
+    <div className={wrapperClassName}>
+      {tail}
+      <div className={bubbleClassName}>{content}</div>
+    </div>
+  );
 }

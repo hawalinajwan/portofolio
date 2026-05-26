@@ -1,13 +1,10 @@
-"use client";
-
-import React from "react";
 import {
   FaDiscord,
   FaGithub,
   FaInstagram,
 } from "react-icons/fa6";
 import { TbCup, TbMailFilled } from "react-icons/tb";
-import { metaData, socialLinks } from "app/config";
+import { socialLinks } from "app/config";
 
 const YEAR = new Date().getFullYear();
 
@@ -43,14 +40,6 @@ export default function Footer() {
       >
         hawalinajwan
       </a>
-      <style jsx>{`
-        @media screen and (max-width: 480px) {
-          article {
-            padding-top: 2rem;
-            padding-bottom: 4rem;
-          }
-        }
-      `}</style>
       <SocialLinks />
     </small>
   );

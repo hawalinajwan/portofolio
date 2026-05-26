@@ -15,6 +15,7 @@ type SpotifyTrackItem = {
   album?: {
     images?: {
       url: string;
+      width?: number;
     }[];
   };
   artists?: {
@@ -89,11 +90,16 @@ export async function GET() {
     return NextResponse.json({ isPlaying: false });
   }
 
+  const albumImage =
+    track.album?.images?.find((image) => image.width && image.width <= 128) ??
+    track.album?.images?.at(-1) ??
+    null;
+
   return NextResponse.json({
     isPlaying: true,
     title: track.name,
     artist: track.artists?.map((artist) => artist.name).join(", ") ?? "",
-    albumImageUrl: track.album?.images?.[0]?.url ?? null,
+    albumImageUrl: albumImage?.url ?? null,
     songUrl: track.external_urls?.spotify ?? null,
   });
 }

@@ -1,8 +1,8 @@
 export const metaData = {
-  baseUrl: "https://fol-nine.vercel.app/",
+  baseUrl: "https://www.hawali.site",
   title: "花",
   name: "hawalinajwan",
-  ogImage: "/profile.png",
+  ogImage: "/profile.jpg",
   description:
     "Portofolio Website",
 };

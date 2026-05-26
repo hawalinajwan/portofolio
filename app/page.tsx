@@ -20,10 +20,9 @@ export default function Page() {
           className="relative shrink-0"
         >
           <Image
-            src="/profile.png"
+            src="/profile.jpg"
             alt="Profile photo"
             className="h-20 w-20 rounded-full bg-gray-100 object-cover grayscale transition-all hover:grayscale-0 sm:h-[108px] sm:w-[108px]"
-            unoptimized
             width={120}
             height={120}
             priority
