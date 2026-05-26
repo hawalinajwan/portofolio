@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section className="pt-24 sm:pt-20 md:pt-24">
-      <div className="relative flex items-center gap-4 border-b border-neutral-200 pb-10 dark:border-neutral-800 sm:gap-5 sm:pb-9">
+      <div className="relative flex items-center gap-4 border-b border-neutral-200 pb-9 dark:border-neutral-800 sm:gap-5 sm:pb-8">
         <a
           href={socialLinks.github}
           target="_blank"
@@ -38,7 +38,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="border-b border-neutral-200 py-8 text-lg leading-relaxed text-slate-700 dark:border-neutral-800 dark:text-slate-300 sm:py-10 sm:text-xl">
+      <div className="border-b border-neutral-200 py-8 text-lg leading-relaxed text-slate-700 dark:border-neutral-800 dark:text-slate-300 sm:text-xl">
         <p className="mb-3">
           A student 📑 based in East Java 🇮🇩 with a passion for technology & graphic design.{" "}
           <a
@@ -71,7 +71,7 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="pt-8 sm:pt-10">
+      <div className="pt-8">
         <h1 className="mb-3 text-xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-2xl">
           Latest Video
         </h1>

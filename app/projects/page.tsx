@@ -78,7 +78,7 @@ function ProjectPreview({ project }: { project: Project }) {
 export default function Projects() {
   return (
     <section className="pt-24 sm:pt-20 md:pt-24">
-      <div className="relative flex items-center gap-4 border-b border-neutral-200 pb-10 dark:border-neutral-800 sm:gap-5 sm:pb-9">
+      <div className="relative flex items-center gap-4 border-b border-neutral-200 pb-9 dark:border-neutral-800 sm:gap-5 sm:pb-8">
         <a
           href={socialLinks.github}
           target="_blank"

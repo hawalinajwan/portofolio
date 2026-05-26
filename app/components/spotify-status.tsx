@@ -104,7 +104,7 @@ export function SpotifyStatus() {
   const tailClassName =
     "pointer-events-none absolute border border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-950";
   const bubbleClassName =
-    "spotify-status-pop relative z-10 inline-flex h-9 w-[min(260px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] sm:h-11 sm:w-[320px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm";
+    "spotify-status-pop relative z-10 inline-flex h-9 w-[min(238px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] sm:h-11 sm:w-[290px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm";
 
   const tail = (
     <>
@@ -152,13 +152,13 @@ export function SpotifyStatus() {
           <TbBrandSpotify className="h-2.5 w-2.5" aria-hidden="true" />
         </span>
       </span>
-      <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden leading-none">
-        <span className="shrink-0 text-neutral-500 dark:text-neutral-400">
+      <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden leading-[1]">
+        <span className="block shrink-0 translate-y-px text-neutral-500 dark:text-neutral-400">
           Playing:
         </span>
         <span
           ref={textViewportRef}
-          className="relative block min-w-0 flex-1 overflow-hidden whitespace-nowrap"
+          className="relative block min-w-0 flex-1 translate-y-px overflow-hidden whitespace-nowrap"
           title={statusText}
         >
           <span
