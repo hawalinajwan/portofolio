@@ -103,8 +103,9 @@ export function SpotifyStatus() {
   const wrapperClassName = "relative inline-block";
   const tailClassName =
     "pointer-events-none absolute border border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-950";
-  const bubbleClassName =
-    "spotify-status-pop relative z-10 inline-flex h-9 w-[min(238px,calc(100vw-116px))] items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] sm:h-11 sm:w-[290px] sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm";
+  const bubbleBaseClassName =
+    "spotify-status-pop relative z-10 inline-flex h-9 items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] sm:h-11 sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm";
+  const bubbleClassName = `${bubbleBaseClassName} w-[min(238px,calc(100vw-116px))] sm:w-[290px]`;
 
   const tail = (
     <>
@@ -123,11 +124,11 @@ export function SpotifyStatus() {
     return (
       <div className={wrapperClassName}>
         {tail}
-        <div className={`${bubbleClassName} font-medium`}>
+        <div className={`${bubbleBaseClassName} w-auto font-medium`}>
           <span className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 sm:h-5 sm:w-5">
             <TbBed className="h-3.5 w-3.5" aria-hidden="true" />
           </span>
-          <span className="truncate">Zzzz</span>
+          <span>Zzzz</span>
         </div>
       </div>
     );
