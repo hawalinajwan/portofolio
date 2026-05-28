@@ -105,7 +105,7 @@ export function SpotifyStatus() {
     "pointer-events-none absolute border border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-950";
   const bubbleBaseClassName =
     "spotify-status-pop relative z-10 inline-flex h-9 items-center gap-1.5 rounded-[20px] border border-neutral-300 bg-white px-3 text-xs text-neutral-950 shadow-[0_8px_22px_rgba(15,23,42,0.10)] transition-colors dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:shadow-[0_8px_22px_rgba(0,0,0,0.28)] sm:h-11 sm:gap-2 sm:rounded-[22px] sm:px-4 sm:text-sm";
-  const bubbleClassName = `${bubbleBaseClassName} w-[min(238px,calc(100vw-116px))] sm:w-[290px]`;
+  const bubbleClassName = `${bubbleBaseClassName} w-max max-w-[min(238px,calc(100vw-116px))] sm:max-w-[290px]`;
 
   const tail = (
     <>

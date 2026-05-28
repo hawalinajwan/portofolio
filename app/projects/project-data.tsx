@@ -5,11 +5,23 @@ export interface Project {
   description: string;
   url: string;
   technologies: string[];
-  preview: "intern-link" | "expressive-camera";
+  preview: "intern-link" | "expressive-camera" | "notify" | "aline";
   image?: string;
+  status?: "in-progress";
 }
 
 export const projects: Project[] = [
+  {
+    title: "ALINE",
+    year: 2026,
+    category: "AI verification platform",
+    description:
+      "AI-powered material verification platform for pharmaceutical incoming goods inspection.",
+    url: "https://github.com/hawalinajwan/ALINE",
+    technologies: ["Vue", "JavaScript", "Azure AI", "OCR", "Validation"],
+    preview: "aline",
+    status: "in-progress",
+  },
   {
     title: "Intern Link",
     year: 2026,
@@ -29,5 +41,21 @@ export const projects: Project[] = [
     technologies: ["React", "JavaScript", "Face API", "Canvas"],
     preview: "expressive-camera",
     image: "/projects/expressive-camera.svg",
+  },
+  {
+    title: "Notify",
+    year: 2026,
+    category: "Automation tool",
+    description:
+      "Automation tool that monitors ETHOL PENS notifications and sends filtered updates to Discord, with calendar export support.",
+    url: "https://github.com/hawalinajwan/notify",
+    technologies: [
+      "Python",
+      "Discord Webhook",
+      "GitHub Gist",
+      "iCalendar",
+      "Automation",
+    ],
+    preview: "notify",
   },
 ];
