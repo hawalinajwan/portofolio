@@ -223,6 +223,79 @@ table {
   transform-origin: left;
 }
 
+.menu-overlay-enter {
+  animation: menu-overlay-enter 240ms ease both;
+}
+
+.menu-overlay-exit {
+  animation: menu-overlay-exit 220ms ease both;
+}
+
+.menu-panel-enter {
+  animation: menu-panel-enter 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform;
+}
+
+.menu-panel-exit {
+  animation: menu-panel-exit 220ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  will-change: transform;
+}
+
+.menu-content-enter {
+  animation: menu-content-enter 260ms cubic-bezier(0.22, 1, 0.36, 1) 70ms both;
+}
+
+@keyframes menu-overlay-enter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-overlay-exit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes menu-panel-enter {
+  0% {
+    opacity: 0.92;
+    transform: translateX(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes menu-panel-exit {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0.96;
+    transform: translateX(32px);
+  }
+}
+
+@keyframes menu-content-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes spotify-status-marquee {
   0%,
   12% {
@@ -271,7 +344,12 @@ table {
   .spotify-status-marquee,
   .spotify-status-pop,
   .spotify-status-tail-dot,
-  .spotify-status-tail-oval {
+  .spotify-status-tail-oval,
+  .menu-overlay-enter,
+  .menu-overlay-exit,
+  .menu-panel-enter,
+  .menu-panel-exit,
+  .menu-content-enter {
     animation: none;
   }
 
