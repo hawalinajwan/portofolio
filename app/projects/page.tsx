@@ -178,24 +178,26 @@ export default function Projects() {
   return (
     <section className="pt-24 sm:pt-20 md:pt-24">
       <div className="relative flex items-center gap-4 border-b border-neutral-200 pb-9 dark:border-neutral-800 sm:gap-5 sm:pb-8">
-        <a
-          href={socialLinks.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative shrink-0"
-        >
-          <Image
-            src="/profile.jpg"
-            alt="Profile photo"
-            className="h-20 w-20 rounded-full bg-gray-100 object-cover grayscale transition-all hover:grayscale-0 sm:h-[108px] sm:w-[108px]"
-            width={120}
-            height={120}
-            priority
-          />
+        <div className="relative shrink-0">
+          <a
+            href={socialLinks.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <Image
+              src="/profile.jpg"
+              alt="Profile photo"
+              className="h-20 w-20 rounded-full bg-gray-100 object-cover grayscale transition-all hover:grayscale-0 sm:h-[108px] sm:w-[108px]"
+              width={120}
+              height={120}
+              priority
+            />
+          </a>
           <div className="absolute left-14 -top-7 z-10 block max-w-[calc(100vw-116px)] sm:left-16 sm:max-w-[320px]">
             <SpotifyStatus />
           </div>
-        </a>
+        </div>
         <div className="min-w-0">
           <h1 className="text-2xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-3xl md:text-[2rem]">
             Hawali Najwan

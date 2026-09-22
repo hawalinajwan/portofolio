@@ -67,12 +67,10 @@ export function SpotifyStatus() {
     ? `${status.title} - ${status.artist}`
     : status.title;
 
+  const hasTrack = Boolean(status.title);
+
   useEffect(() => {
-    if (
-      !status.isPlaying ||
-      !textViewportRef.current ||
-      !textMeasureRef.current
-    ) {
+    if (!hasTrack || !textViewportRef.current || !textMeasureRef.current) {
       setShouldScroll(false);
       return;
     }
@@ -94,7 +92,7 @@ export function SpotifyStatus() {
       window.cancelAnimationFrame(frame);
       window.removeEventListener("resize", updateScrollState);
     };
-  }, [status.isPlaying, statusText]);
+  }, [hasTrack, statusText]);
 
   if (!hasLoaded) {
     return null;
@@ -120,19 +118,7 @@ export function SpotifyStatus() {
     </>
   );
 
-  if (!status.isPlaying) {
-    return (
-      <div className={wrapperClassName}>
-        {tail}
-        <div className={`${bubbleBaseClassName} w-auto font-medium`}>
-          <span className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 sm:h-5 sm:w-5">
-            <TbBed className="h-3.5 w-3.5" aria-hidden="true" />
-          </span>
-          <span>Zzzz</span>
-        </div>
-      </div>
-    );
-  }
+  const label = status.isPlaying ? "Playing:" : "Last played:";
 
   const content = (
     <>
@@ -149,17 +135,19 @@ export function SpotifyStatus() {
         ) : (
           <TbPlus className="h-4 w-4" aria-hidden="true" />
         )}
-        <span className="absolute -right-1 -top-1 flex h-3 w-3 items-center justify-center rounded-full bg-[#1DB954] text-white ring-2 ring-white dark:ring-neutral-950 sm:h-3.5 sm:w-3.5">
-          <TbBrandSpotify className="h-2.5 w-2.5" aria-hidden="true" />
-        </span>
+        {status.isPlaying ? (
+          <span className="absolute -right-1 -top-1 flex h-3 w-3 items-center justify-center rounded-full bg-[#1DB954] text-white ring-2 ring-white dark:ring-neutral-950 sm:h-3.5 sm:w-3.5">
+            <TbBrandSpotify className="h-2.5 w-2.5" aria-hidden="true" />
+          </span>
+        ) : null}
       </span>
-      <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden leading-[1]">
+      <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden">
         <span className="block shrink-0 translate-y-px text-neutral-500 dark:text-neutral-400">
-          Playing:
+          {label}
         </span>
         <span
           ref={textViewportRef}
-          className="relative block min-w-0 flex-1 translate-y-px overflow-hidden whitespace-nowrap"
+          className="relative block min-w-0 flex-1 translate-y-px overflow-hidden whitespace-nowrap leading-[1.35]"
           title={statusText}
         >
           <span
@@ -206,6 +194,20 @@ export function SpotifyStatus() {
       </span>
     </>
   );
+
+  if (!hasTrack) {
+    return (
+      <div className={wrapperClassName}>
+        {tail}
+        <div className={`${bubbleBaseClassName} w-auto font-medium`}>
+          <span className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 sm:h-5 sm:w-5">
+            <TbBed className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+          <span>Zzzz</span>
+        </div>
+      </div>
+    );
+  }
 
   if (status.songUrl) {
     return (

@@ -4,7 +4,11 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const authorizeEndpoint = "https://accounts.spotify.com/authorize";
-const scopes = ["user-read-currently-playing", "user-read-playback-state"];
+const scopes = [
+  "user-read-currently-playing",
+  "user-read-playback-state",
+  "user-read-recently-played",
+];
 
 function getRedirectUri(request: NextRequest) {
   return (

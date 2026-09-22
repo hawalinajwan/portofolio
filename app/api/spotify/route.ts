@@ -6,6 +6,8 @@ export const dynamic = "force-dynamic";
 const tokenEndpoint = "https://accounts.spotify.com/api/token";
 const currentlyPlayingEndpoint =
   "https://api.spotify.com/v1/me/player/currently-playing";
+const recentlyPlayedEndpoint =
+  "https://api.spotify.com/v1/me/player/recently-played?limit=1";
 
 type SpotifyTrackItem = {
   name: string;
@@ -27,6 +29,26 @@ type SpotifyCurrentlyPlaying = {
   is_playing: boolean;
   item?: SpotifyTrackItem | null;
 };
+
+type SpotifyRecentlyPlayed = {
+  items?: {
+    track?: SpotifyTrackItem | null;
+  }[];
+};
+
+function toTrackPayload(track: SpotifyTrackItem) {
+  const albumImage =
+    track.album?.images?.find((image) => image.width && image.width <= 128) ??
+    track.album?.images?.at(-1) ??
+    null;
+
+  return {
+    title: track.name,
+    artist: track.artists?.map((artist) => artist.name).join(", ") ?? "",
+    albumImageUrl: albumImage?.url ?? null,
+    songUrl: track.external_urls?.spotify ?? null,
+  };
+}
 
 async function getAccessToken() {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
@@ -75,31 +97,38 @@ export async function GET() {
     cache: "no-store",
   });
 
-  if (response.status === 204 || response.status === 202) {
-    return NextResponse.json({ isPlaying: false });
+  if (response.status === 200) {
+    const data = (await response.json()) as SpotifyCurrentlyPlaying;
+    const track = data.item;
+
+    if (track) {
+      // Paused tracks keep their playback state, so they act as the last played song.
+      return NextResponse.json({
+        isPlaying: data.is_playing,
+        ...toTrackPayload(track),
+      });
+    }
   }
 
-  if (!response.ok) {
-    return NextResponse.json({ isPlaying: false });
-  }
-
-  const data = (await response.json()) as SpotifyCurrentlyPlaying;
-  const track = data.item;
-
-  if (!data.is_playing || !track) {
-    return NextResponse.json({ isPlaying: false });
-  }
-
-  const albumImage =
-    track.album?.images?.find((image) => image.width && image.width <= 128) ??
-    track.album?.images?.at(-1) ??
-    null;
-
-  return NextResponse.json({
-    isPlaying: true,
-    title: track.name,
-    artist: track.artists?.map((artist) => artist.name).join(", ") ?? "",
-    albumImageUrl: albumImage?.url ?? null,
-    songUrl: track.external_urls?.spotify ?? null,
+  // No active playback state: fall back to the most recently played track.
+  const recentResponse = await fetch(recentlyPlayedEndpoint, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "no-store",
   });
+
+  if (recentResponse.ok) {
+    const recent = (await recentResponse.json()) as SpotifyRecentlyPlayed;
+    const track = recent.items?.[0]?.track;
+
+    if (track?.name) {
+      return NextResponse.json({
+        isPlaying: false,
+        ...toTrackPayload(track),
+      });
+    }
+  }
+
+  return NextResponse.json({ isPlaying: false });
 }
