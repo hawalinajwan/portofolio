@@ -35,7 +35,7 @@ export default function Page() {
         </div>
         <div className="min-w-0">
           <h1 className="text-2xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-3xl md:text-[2rem]">
-            Hawali Najwan
+            Muhammad Hawali Najwan
           </h1>
         </div>
       </div>
