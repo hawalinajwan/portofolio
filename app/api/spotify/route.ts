@@ -50,12 +50,6 @@ function toTrackPayload(track: SpotifyTrackItem) {
   };
 }
 
-type TrackPayload = ReturnType<typeof toTrackPayload>;
-
-// Last track seen from Spotify, kept in memory so the bubble can still show
-// something when the API reports no playback at all (e.g. device off).
-let lastKnownTrack: TrackPayload | null = null;
-
 async function getAccessToken() {
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -93,7 +87,7 @@ export async function GET() {
   const accessToken = await getAccessToken();
 
   if (!accessToken) {
-    return NextResponse.json({ isPlaying: false, ...lastKnownTrack });
+    return NextResponse.json({ isPlaying: false });
   }
 
   const response = await fetch(currentlyPlayingEndpoint, {
@@ -109,10 +103,9 @@ export async function GET() {
 
     if (track) {
       // Paused tracks keep their playback state, so they act as the last played song.
-      lastKnownTrack = toTrackPayload(track);
       return NextResponse.json({
         isPlaying: data.is_playing,
-        ...lastKnownTrack,
+        ...toTrackPayload(track),
       });
     }
   }
@@ -130,17 +123,11 @@ export async function GET() {
     const track = recent.items?.[0]?.track;
 
     if (track?.name) {
-      lastKnownTrack = toTrackPayload(track);
       return NextResponse.json({
         isPlaying: false,
-        ...lastKnownTrack,
+        ...toTrackPayload(track),
       });
     }
-  }
-
-  // Last resort: the track we last saw from this server.
-  if (lastKnownTrack) {
-    return NextResponse.json({ isPlaying: false, ...lastKnownTrack });
   }
 
   return NextResponse.json({ isPlaying: false });

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { TbBrandSpotify, TbPlus } from "react-icons/tb";
+import { TbBed, TbBrandSpotify, TbPlus } from "react-icons/tb";
 
 type SpotifyStatus = {
   isPlaying: boolean;
@@ -196,8 +196,17 @@ export function SpotifyStatus() {
   );
 
   if (!hasTrack) {
-    // Nothing to show yet (no playback history since the server started).
-    return null;
+    return (
+      <div className={wrapperClassName}>
+        {tail}
+        <div className={`${bubbleBaseClassName} w-auto font-medium`}>
+          <span className="flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 sm:h-5 sm:w-5">
+            <TbBed className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+          <span>Zzzz</span>
+        </div>
+      </div>
+    );
   }
 
   if (status.songUrl) {
