@@ -142,12 +142,12 @@ export function SpotifyStatus() {
         ) : null}
       </span>
       <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden">
-        <span className="block shrink-0 translate-y-px text-neutral-500 dark:text-neutral-400">
+        <span className="block shrink-0 text-neutral-500 dark:text-neutral-400">
           {label}
         </span>
         <span
           ref={textViewportRef}
-          className="relative block min-w-0 flex-1 translate-y-px overflow-hidden whitespace-nowrap leading-[1.35]"
+          className="relative block min-w-0 flex-1 overflow-hidden whitespace-nowrap leading-[1.35]"
           title={statusText}
         >
           <span
