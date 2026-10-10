@@ -5,7 +5,7 @@ export interface Project {
   description: string;
   url: string;
   technologies: string[];
-  preview: "intern-link" | "expressive-camera" | "notify" | "aline";
+  preview?: "intern-link" | "expressive-camera" | "notify" | "aline";
   image?: string;
   status?: "in-progress";
 }
@@ -21,6 +21,26 @@ export const projects: Project[] = [
     technologies: ["Vue", "JavaScript", "Azure AI", "OCR", "Validation"],
     preview: "aline",
     status: "in-progress",
+  },
+  {
+    title: "Gamespace",
+    year: 2026,
+    category: "Godot game series",
+    description:
+      "Eight Godot games built as weekly assignments for the UKM game development division: Timed Switch, Shooter, Sniper, Quest Log, Sliding Puzzle, Glass Floor, Particle Dust, and Berbelok dengan Efek Drift.",
+    url: "https://github.com/hawalinajwan/Gamespace-godot",
+    technologies: ["Godot", "GDScript", "Jolt Physics"],
+    image: "/projects/gamespace.svg",
+  },
+  {
+    title: "App Perpustakaan",
+    year: 2026,
+    category: "Library management system",
+    description:
+      "Laravel 12 application for managing a campus digital library: book records, members, and lending transactions.",
+    url: "https://github.com/hawalinajwan/app-perpustakaan",
+    technologies: ["Laravel 12", "PHP", "Blade", "MySQL", "Vite"],
+    image: "/projects/app-perpustakaan.svg",
   },
   {
     title: "Intern Link",
