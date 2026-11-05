@@ -1,14 +1,26 @@
 import "./global.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
+import { SmoothScroll } from "./components/smooth-scroll";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  axes: ["wdth"],
+  variable: "--font-display",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
@@ -52,42 +64,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
-      <head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          href="/rss.xml"
-          title="RSS Feed"
-        />
-        <link
-          rel="alternate"
-          type="application/atom+xml"
-          href="/atom.xml"
-          title="Atom Feed"
-        />
-        <link
-          rel="alternate"
-          type="application/feed+json"
-          href="/feed.json"
-          title="JSON Feed"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable} ${inter.className}`}
+      suppressHydrationWarning
+    >
+      <head />
       <body className="antialiased flex min-h-screen flex-col items-center mx-auto mb-20 lg:mb-40">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main className="flex-auto min-w-0 flex flex-col px-6 sm:px-8 md:px-0 max-w-[640px] w-full">
-            <Navbar />
-            {children}
-            <Footer />
-            <Analytics />
-            <SpeedInsights />
-          </main>
-        </ThemeProvider>
+        <SmoothScroll>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main className="flex-auto min-w-0 flex flex-col px-6 sm:px-8 md:px-0 max-w-[640px] w-full">
+              <Navbar />
+              {children}
+              <Footer />
+              <Analytics />
+              <SpeedInsights />
+            </main>
+          </ThemeProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

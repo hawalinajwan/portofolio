@@ -36,6 +36,33 @@
 
 html {
   min-width: 360px;
+  font-size: clamp(14px, 0.5vw + 7px, 18px);
+}
+
+.type-display {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+  font-variation-settings: "wdth" 86;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.type-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@supports (text-box-trim: trim-both) {
+  .type-display,
+  .type-label {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
 }
 
 .prose {

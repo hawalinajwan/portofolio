@@ -34,7 +34,7 @@ export default function Page() {
           </div>
         </div>
         <div className="min-w-0">
-          <h1 className="text-2xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-3xl md:text-[2rem]">
+          <h1 className="type-display text-[clamp(1.6rem,4.4vw,2.35rem)] text-neutral-950 dark:text-neutral-50">
             Muhammad Hawali Najwan
           </h1>
         </div>
@@ -74,7 +74,7 @@ export default function Page() {
       </div>
 
       <div className="pt-8">
-        <h1 className="mb-3 text-xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-2xl">
+        <h1 className="type-label mb-3 text-neutral-500 dark:text-neutral-400">
           Latest Video
         </h1>
         <div className="aspect-video cursor-pointer overflow-hidden rounded-[15px] bg-neutral-100 dark:bg-neutral-900">
@@ -88,7 +88,7 @@ export default function Page() {
             allowFullScreen
           ></iframe>
         </div>
-        <h1 className="mb-3 mt-8 text-xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-2xl">
+        <h1 className="type-label mb-3 mt-8 text-neutral-500 dark:text-neutral-400">
           Check out my playlist
         </h1>
         <div className="cursor-pointer overflow-hidden rounded-[15px] bg-neutral-100 dark:bg-neutral-900">

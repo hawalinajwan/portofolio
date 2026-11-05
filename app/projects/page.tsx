@@ -44,10 +44,10 @@ function ProjectPreview({ project }: { project: Project }) {
 
   if (project.preview === "intern-link") {
     return (
-      <div className="relative flex aspect-[16/10] overflow-hidden border-b border-neutral-200 bg-neutral-950 text-white dark:border-neutral-800">
+      <div className="relative flex aspect-[16/10] overflow-hidden border-b border-neutral-200/30 bg-white/70 text-neutral-950 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:border-neutral-800/50 dark:bg-neutral-950/45 dark:text-white">
         {progressBadge}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(255,255,255,0.20),transparent_25%),linear-gradient(135deg,rgba(15,23,42,0.96),rgba(15,23,42,0.72)_45%,rgba(244,63,94,0.24))]" />
-        <div className="absolute inset-x-0 top-0 z-10 flex items-center gap-4 bg-white/20 px-5 py-3 text-[11px] font-semibold backdrop-blur">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(255,255,255,0.35),transparent_25%),linear-gradient(135deg,rgba(15,23,42,0.55),rgba(15,23,42,0.25)_45%,rgba(244,63,94,0.12))]" />
+        <div className="absolute inset-x-0 top-0 z-10 flex items-center gap-4 bg-white/40 px-5 py-3 text-[11px] font-semibold backdrop-blur">
           <span className="text-sm">intern-link</span>
           <span className="text-white/75">Login</span>
           <span className="rounded-md bg-pink-500 px-3 py-1.5">Register</span>
@@ -74,7 +74,7 @@ function ProjectPreview({ project }: { project: Project }) {
 
   if (project.preview === "notify") {
     return (
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-neutral-200 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white dark:border-neutral-800">
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-neutral-200/30 bg-white/70 text-neutral-950 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.12)] dark:border-neutral-800/50 dark:bg-neutral-950/45 dark:text-white">
         {progressBadge}
         <div className="absolute inset-0 flex items-center justify-center p-5">
           <div className="w-full max-w-[300px] scale-[0.82] sm:scale-90">
@@ -199,14 +199,14 @@ export default function Projects() {
           </div>
         </div>
         <div className="min-w-0">
-          <h1 className="text-2xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-3xl md:text-[2rem]">
-            Hawali Najwan
+          <h1 className="type-display text-[clamp(1.6rem,4.4vw,2.35rem)] text-neutral-950 dark:text-neutral-50">
+            Muhammad Hawali Najwan
           </h1>
         </div>
       </div>
 
       <div className="border-b border-neutral-200 py-8 dark:border-neutral-800 sm:py-10">
-        <h2 className="mb-4 text-4xl font-bold tracking-tight text-neutral-950 dark:text-neutral-50 sm:text-5xl">
+        <h2 className="type-display mb-4 text-[clamp(2.25rem,7vw,3.5rem)] text-neutral-950 dark:text-neutral-50">
           Projects
         </h2>
         <p className="max-w-3xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-xl">
