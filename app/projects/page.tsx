@@ -87,8 +87,8 @@ function ProjectPreview({ project }: { project: Project }) {
                 live monitor
               </span>
             </div>
-            <div className="space-y-2 rounded-xl border border-white/10 bg-white/10 p-4 shadow-2xl backdrop-blur">
-              <div className="flex items-start gap-3 rounded-lg bg-slate-950/50 p-3">
+            <div className="space-y-2 rounded-xl border border-white/20 bg-white/20 p-4 shadow-2xl backdrop-blur">
+              <div className="flex items-start gap-3 rounded-lg bg-white/10 p-3">
                 <TbBell className="mt-0.5 h-5 w-5 shrink-0 text-blue-300" />
                 <div>
                   <p className="text-sm font-bold">ETHOL notification</p>
@@ -97,7 +97,7 @@ function ProjectPreview({ project }: { project: Project }) {
                   </p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 rounded-lg bg-slate-950/50 p-3">
+              <div className="flex items-start gap-3 rounded-lg bg-white/10 p-3">
                 <TbCalendarEvent className="mt-0.5 h-5 w-5 shrink-0 text-violet-300" />
                 <div>
                   <p className="text-sm font-bold">Calendar export</p>
