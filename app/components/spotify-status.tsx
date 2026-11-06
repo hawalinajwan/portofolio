@@ -43,7 +43,13 @@ export function SpotifyStatus() {
         const data = (await response.json()) as SpotifyStatus;
 
         if (isMounted) {
-          setStatus(data);
+          // Keep the last known track when a poll comes back empty, so a
+          // transient outage does not flip the bubble back to "Zzzz".
+          setStatus((current) =>
+            data.title || !current.title
+              ? data
+              : { ...current, isPlaying: false }
+          );
           setHasLoaded(true);
         }
       } catch {
