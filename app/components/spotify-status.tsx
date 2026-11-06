@@ -86,11 +86,11 @@ export function SpotifyStatus() {
         return;
       }
 
-      // Avoid enabling marquee for sub-pixel overflow (font loading / rounding)
-      // that looks like the text is "tilted" even when it fits.
+      // Avoid enabling marquee for tiny overflow that feels "tilted" due to font rounding.
+      // Only scroll when the text is clearly wider than the container.
       const scrollWidth = textMeasureRef.current.scrollWidth;
       const clientWidth = textViewportRef.current.clientWidth;
-      setShouldScroll(scrollWidth - clientWidth > 2);
+      setShouldScroll(scrollWidth - clientWidth > 10);
     }
 
     const frame = window.requestAnimationFrame(updateScrollState);
