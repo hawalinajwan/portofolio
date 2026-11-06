@@ -86,11 +86,14 @@ export function SpotifyStatus() {
         return;
       }
 
-      // Avoid enabling marquee for tiny overflow that feels "tilted" due to font rounding.
-      // Only scroll when the text is clearly wider than the container.
+      // Enable marquee only when text overflows container significantly.
+      // Short titles + marquee animation creates tilt illusion because the
+      // fixed scroll distance (50%+1rem) doesn't match the text width.
+      // When not playing or title is short, always show static text.
       const scrollWidth = textMeasureRef.current.scrollWidth;
       const clientWidth = textViewportRef.current.clientWidth;
-      setShouldScroll(scrollWidth - clientWidth > 10);
+      const isShortTitle = status.title?.length <= 15;
+      setShouldScroll(scrollWidth > clientWidth && !isShortTitle);
     }
 
     const frame = window.requestAnimationFrame(updateScrollState);
