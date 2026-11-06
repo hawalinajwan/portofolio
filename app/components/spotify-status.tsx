@@ -93,7 +93,8 @@ export function SpotifyStatus() {
       const scrollWidth = textMeasureRef.current.scrollWidth;
       const clientWidth = textViewportRef.current.clientWidth;
       const isShortTitle = status.title?.length <= 15;
-      setShouldScroll(scrollWidth > clientWidth && !isShortTitle);
+      const hasSignificantOverflow = scrollWidth - clientWidth > 10;
+      setShouldScroll(!isShortTitle && hasSignificantOverflow);
     }
 
     const frame = window.requestAnimationFrame(updateScrollState);
