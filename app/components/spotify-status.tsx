@@ -86,9 +86,11 @@ export function SpotifyStatus() {
         return;
       }
 
-      setShouldScroll(
-        textMeasureRef.current.scrollWidth > textViewportRef.current.clientWidth
-      );
+      // Avoid enabling marquee for sub-pixel overflow (font loading / rounding)
+      // that looks like the text is "tilted" even when it fits.
+      const scrollWidth = textMeasureRef.current.scrollWidth;
+      const clientWidth = textViewportRef.current.clientWidth;
+      setShouldScroll(scrollWidth - clientWidth > 2);
     }
 
     const frame = window.requestAnimationFrame(updateScrollState);
