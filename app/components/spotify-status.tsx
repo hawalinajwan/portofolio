@@ -92,7 +92,7 @@ export function SpotifyStatus() {
       // When not playing or title is short, always show static text.
       const scrollWidth = textMeasureRef.current.scrollWidth;
       const clientWidth = textViewportRef.current.clientWidth;
-      const isShortTitle = status.title?.length <= 15;
+      const isShortTitle = (status.title?.length ?? 0) <= 15;
       const hasSignificantOverflow = scrollWidth - clientWidth > 10;
       setShouldScroll(!isShortTitle && hasSignificantOverflow);
     }
