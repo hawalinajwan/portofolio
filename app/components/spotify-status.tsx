@@ -148,7 +148,7 @@ export function SpotifyStatus() {
         ) : null}
       </span>
       <span className="flex min-w-0 flex-1 items-center gap-1.5 overflow-hidden">
-        <span className="block shrink-0 text-neutral-500 dark:text-neutral-400">
+        <span className="block shrink-0 leading-[1.35] text-neutral-500 dark:text-neutral-400">
           {label}
         </span>
         <span
