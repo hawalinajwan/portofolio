@@ -153,7 +153,7 @@ export function SpotifyStatus() {
         </span>
         <span
           ref={textViewportRef}
-          className="relative block min-w-0 flex-1 overflow-hidden whitespace-nowrap leading-[1.35]"
+          className="relative flex min-w-0 flex-1 items-center overflow-hidden whitespace-nowrap leading-[1.35]"
           title={statusText}
         >
           <span
